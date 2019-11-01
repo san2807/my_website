@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>datawarehouse</title></head>
+
+  <body>
+    <h2>Data Warehouse (DWH) Concepts</h2>
+    Data Warehouse (DWH)<br>
+    <br>
+    Data Marts<br><br><a href="dimensions.html">Dimensions</a> (d/n)<br><br><a href="facts.html">Facts</a><br><br>
+    <a href="file:///C:/sandeep/my_website/datawarehouse/datawarehouse.html#incremental">Incremental
+      Loading</a><br>
+    <br>
+    <a href="file:///C:/sandeep/my_website/datawarehouse/datawarehouse.html#bi">Business
+      Intelligence</a><br>
+    <br>
+    <b>Data Warehouse (DWH)</b><br>
+    <br>
+    * is a s/m used for reporting &amp; data analysis [<a href="https://en.wikipedia.org/wiki/Data_warehouse">1</a>]<br>
+    * considered a core component of BI [<a href="https://en.wikipedia.org/wiki/Data_warehouse">1</a>]<br>
+    * central repositories of integrated data from one or more disparate
+    sources. [<a href="https://en.wikipedia.org/wiki/Data_warehouse">1</a>]<br>
+    <br>
+    <br>
+    <b>Data Integration (DI)<br>
+    </b>* DI is the process of combining heterogeneous data sources into
+    a single queriable schema so as to an unified view of these data. [<a href="https://dwbi.org/etl/etl/25-data-integration">1</a>]<br>
+    <br>
+    <b>why DI is required</b><br>
+    * often large companies and enterprises maintain separate
+    departmental d/bs to store the data pertaining to specific
+    department. Although such seperations of the data provides them
+    better manageability and security, performing any cross departmental
+    analysis on these datasets becomes impossible.<br>
+    <b><br>
+      how integration can be done<br>
+    </b>* 2 major approaches for DI is <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * <a href="#tight">Tight
+      Coupling</a> : Data Warehousing<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * Loose Coupling : Virtual
+    Mediated Schema<br>
+    <br>
+    <a href="https://d2fvxlvmm9ujfq.cloudfront.net/di/Data+Integration.pdf">https://d2fvxlvmm9ujfq.cloudfront.net/di/Data+Integration.pdf</a><br>
+    <br>
+    <b>why do v need staging area during ETL load</b> [<a href="https://dwbi.org/etl/etl/52-why-do-we-need-staging-area-during-etl-load">1</a>]<br>
+    "we have a simple DWH that takes data from few RDBMS sources systems
+    and load the data in dimensions and facts tables of DWH. I wonder
+    why we have a staging layer in between. Why can't we process
+    everything on the fly and push then in DWH".<br>
+    &nbsp;&nbsp;&nbsp; staging area is not a necessity if we can handle
+    it on the fly. Few reasons why v can't avoid a staging area:<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * source systems r only
+    available for extraction during a specific time slot which is
+    generally lesser than your overall data loading time.<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * Its good
+    idea to extract and keep things at your end before you lose the
+    connection to the source s/ys<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * u want to extract data based
+    on some conditions which require u to join two or more different
+    s/ys together.<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * various source s/ys hav
+    different allotted timings for data exaction.<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * DWH data loading frequency
+    does not match with the refresh frequencies of the source s/ys.<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * ETL process involves complex
+    data t/ns that require extra space to temporarily stage the data<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * There is specific data
+    reconciliation / debugging requirement which warrants the use of
+    staging area for pre, during or post load data validations<br>
+    <br>
+    What is a Staging Area and What is the purpose of Staging Area [<a href="http://dwhlaureate.blogspot.in/2012/06/what-is-staging-area-and-what-is.html">1</a>]<br>
+    Benefits of using Staging Database while designing Data Warehouse [<a href="http://stackoverflow.com/questions/21010045/benefits-of-using-staging-database-while-designing-data-warehouse">1</a>]<br>
+    What is staging Area or stg table load in Informatica? [<a href="https://network.informatica.com/message/126531#126531">1</a>]<br>
+    Data Staging Area [<a href="http://datawarehousing-basics.blogspot.in/2010/06/data-staging-area.html">1</a>]<br>
+    <br>
+    <br>
+    <br>
+    <b>Top 10 things you must know before designing a data warehouse </b>[<a href="https://dwbi.org/data-modelling/dw-design/12-top-10-things-you-must-know-before-designing-a-data-warehouse">1</a>]<b><br>
+    </b>1. ETL solution takes more time to design than analytical
+    solutions<br>
+    2. DWH scope will increase along the development<br>
+    3. Issues will be discovered in the source system that went
+    undetected till date<br>
+    4. u will need to validate data not being validated in source s/ms<br>
+    5. user training will not be sufficient and user will not put their
+    training in use<br>
+    6. users will create conflicting business rules<br>
+    7. volumetric mis-judgement is more common than you thought<br>
+    8. It is ultimately IT's responsibility to prove the correctness of
+    data<br>
+    9. DWH project incur high maintenance cost <br>
+    10. amount of time needed to refresh ur DWH is going to be your top
+    concern<br>
+    <br>
+    <i><b><a name="incremental"></a>Incremental Loading</b></i><b><br>
+      Methods of Incremental Loading in Data Warehouse </b>[<a href="https://dwbi.org/etl/etl/53-methods-of-incremental-loading-in-data-warehouse">1</a>]<b><br>
+    </b>* incremental loading a.k.a <font color="#ff6600"><b>delta
+        loading</b></font> is an widely used method to load data in DWH
+    from respective source s/ms<br>
+    * in almost all the data ware housing scenarios, we extract data
+    from one or more source s/ms and keep storing them in DWH for future
+    analysis.<br>
+    * the source s/ms are generally OLTP s/ms which store everyday
+    transactional data <br>
+    * when it comes to loading these transactional data to dwh, v hav 2
+    approaches:<br>
+    &nbsp;&nbsp;&nbsp; * Full Load<br>
+    &nbsp;&nbsp;&nbsp; * Incremental Load<br>
+    <br>
+    <b>Incremental Loading for Dimension Table</b> [<a href="https://dwbi.org/etl/etl/54-incremental-loading-for-dimension-table.html">1</a>]<br>
+    Should we do incremental loading for dimensions?<br>
+    In a dimensional model, we may perform incremental loading for
+    dimension tables also. One may argue that this wont be necessary as
+    data volume in dimension tables are not as high as the data volumes
+    in the fact tables, hence we can simply do a full load every time.<br>
+    <br>
+    I personally do not agree to this argument. This is because during
+    the last few years I have seen tremendous growth in the data in
+    dimension tables and things can get quite heavy especially if we are
+    trying to load SCD type 2 dimensions. Anyway, without much ado,
+    let's delve deep.<br>
+    <br>
+    Standard Method of Loading<br>
+    Like before, for our purpose we will assume we have the below
+    customer table in our source system from where we need to perform
+    the data loading.<br>
+    <br>
+    CustomerID&nbsp; CustomerName&nbsp;
+    Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LastUpdatedDate<br>
+    1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    John&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Individual&nbsp;&nbsp; 22-Mar-2012<br>
+    2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Ryan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Individual&nbsp;&nbsp; 22-Mar-2012<br>
+    3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Bakers'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Corporate&nbsp;&nbsp;&nbsp; 23-Mar-2012<br>
+    <br>
+    <br>
+    <b>Incremental Loading for Fact Tables</b> [<a href="https://dwbi.org/etl/etl/55-incremental-loading-for-fact-tables.html">1</a>]<br>
+    <br>
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+    <br>
+    <br>
+    <b><a name="tight"></a>Tight Coupling</b> [<a href="https://dwbi.org/etl/etl/25-data-integration">1</a>]<br>
+    * in case of tight coupling approach - which is often implemented
+    through data warehousing, data is pulled over from disparate sources
+    into a single physical location through ETL process.<br>
+    * this approach is called tight coupling as data is tightly coupled
+    with the physical repository at the time of query.<br>
+    <br>
+    <b> </b><br>
+    * <br>
+    <br>
+    <br>
+    <b><a name="bi"></a>Business Intelligence</b><br>
+    Question :<br>
+    1. why can not we use transactional systems for business
+    intelligence.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="https://dwbi.org/"></a><br>
+    <br>
+    <br><span style="font-weight: bold;">
+    Books:<br></span>[<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>] [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/</a>]&nbsp;<span style="font-weight: bold;">The Data Warehouse Toolkit, 3rd Edition</span><br>[<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb2</a>]
+    [<a href="https://www.mhprofessional.com/9780071744324-usa-star-schema-the-complete-reference-group">https://www.mhprofessional.com/9780071744324-usa-star-schema-the-complete-reference-group</a>]
+    <span style="font-weight: bold;">Star Schema The Complete Reference </span><br>
+    <br>
+    <u><b>References: </b></u><br>
+    <br>
+    <a href="http://www.rpi.edu/datawarehouse/dw-about.html">http://www.rpi.edu/datawarehouse/dw-about.html</a><br>
+    <a href="http://holowczak.com/introduction-data-warehousing/">[http://holowczak.com/introduction-data-warehousing/</a>]<br>
+    [<a href="http://www.1keydata.com/datawarehousing/datawarehouse.html">http://www.1keydata.com/datawarehousing/datawarehouse.html</a>]<br>
+    [<a href="http://dwhlaureate.blogspot.in/2012/11/phases-involved-in-etl-project.html">http://dwhlaureate.blogspot.in/2012/11/phases-involved-in-etl-project.html</a>]<br>
+    <a href="https://dwbi.org/">https://dwbi.org/</a><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body></html>

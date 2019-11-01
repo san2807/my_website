@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>tasks</title>
+    
+    </head>
+<body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <h3>Control Flow</h3>
+    Control flow SSIS toolbox contains 3 types of objects:<br>
+    <ol>
+      <li><a href="#container">Containers</a></li>
+      <li><a href="#tasks">Control flow items/tasks</a></li>
+      <li>Maintenance Plan tasks<br>
+      </li>
+    </ol>
+    <h3><br>
+    </h3>
+    <p><b><a name="container"></a>Containers<br>
+      </b>* special type of item that can hold other control flow
+      items/tasks &amp; maintenance plan tasks [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+      * help us to repeat a set of tasks or organize group of tasks
+      within in p/c [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]</p>
+    <p><b> </b>* core units in SSIS architecture from grouping tasks
+      together logically into units of work.<br>
+      * besides visual consistency, it enable u to define variables
+      &amp; event handlers within the scope of container (instead of
+      package)<br>
+    </p>
+    <ol>
+      <li>Task Host</li>
+      <li>Sequence</li>
+      <li><a href="#for_loop">For Loop</a></li>
+      <li>Foreach Loop</li>
+    </ol>
+    <p><br>
+    </p>
+    <b><a name="tasks"></a>Control Flow Tasks</b><br>
+    <p>* task can best described as an individual unit of work.<br>
+      * task is discrete unit of work that can perform typical actions
+      required by an ETL process, from moving a file and preparing data
+      sources<br>
+      &nbsp;&nbsp;&nbsp; to sending e-mail confirmation when everything
+      is complete.<br>
+      * more advanced tasks enable u to perform actions like executing
+      SQL commands, sending mails, running VB or C# code<br>
+    </p>
+    <p> * task provide functionality to ur package (in the same way
+      method does in programming language)<br>
+      * task r extensible. u can create ur own custom task in .NET<br>
+      * create ur own task if u need a workflow item that doesn't exist
+      or if u have a common scripting function that can benefit from
+      reuse<br>
+      &nbsp;&nbsp;&nbsp; in ur package development<br>
+    </p>
+    <ol>
+      <li><a href="#ana_exe">Analysis Services Execute DDL</a><br>
+      </li>
+      <li><a href="#ana_process">Analysis Services Processing</a><br>
+      </li>
+      <li><a href="#bulkinsert">Bulk Insert</a><br>
+      </li>
+      <li>CDC Control<br>
+      </li>
+      <li><a href="#data_flow">Data Flow</a><br>
+      </li>
+      <li><a href="#datamining">Data Mining Query</a><br>
+      </li>
+      <li><a href="#dataprofiler">Data Profiling</a></li>
+      <li><a href="#executepackage">Executing Package</a></li>
+      <li><a href="#executeprocess">Execute Process</a></li>
+      <li><a href="#executesql">Execute SQL</a></li>
+      <li><a href="#expression">Expression</a> <br>
+      </li>
+      <li><a href="#filesystem">File System</a></li>
+      <li><a href="#ftp">FTP</a></li>
+      <li>Message Queue</li>
+      <li><a href="#script">Script</a></li>
+      <li>Send Mail</li>
+      <li><a href="#Web_Services">Web Service</a></li>
+      <li>WMI Data Reader</li>
+      <li>WMI Event Watcher</li>
+      <li><a href="#XML">XML</a></li>
+    </ol><span style="font-weight: bold;"><br>Mainenance Plan Tasks:<br></span>1. back up d/b task<br>2. check database integrity task<br>3. execute sql server agent job task<br>4. execute t-sql statement task<br>5. history cleanup task<br>6. maintenance cleanup task<br>7. notify operator task<br>8. rebuild index task<br>9. reorganize index task<br>10. shrink database task<br>11. update statistics task<br><br>
+    <br>
+    <br>
+    <b><a name="for_loop"></a>For Loop Container<br>
+    </b>* enables us to repeat a <b>segment </b>of a control flow. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>* no. of times content of container is executed is controlled by three properties [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>&nbsp;&nbsp;&nbsp; 1. InitExpression<br>&nbsp;&nbsp;&nbsp; 2. Eval Expression<br>&nbsp;&nbsp;&nbsp; 3. AssignExpression<br><br><span style="font-weight: bold;">Foreach Loop Container</span><br>* like For loop, it also provides a way of repeating a segment of control flow<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; - but rather than have an expression to control when
+the loop is exited, Foreach Loop container iterates <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; one time for each item in collection.  [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    <br><br><span style="font-weight: bold;">Sequence Container</span><br>
+    <br>
+    <br>
+    <b><a name="ana_exe"></a>Analysis Services Execute DDL<br>
+    </b>* enables us to run statement on Analysis service server. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * statement must be valid DDL query<br>
+    &nbsp;&nbsp;&nbsp; * which let us create, modify, delete &amp;
+    process Analysis service objects like tables, cubes, dimensions. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    <br>
+    <br>
+    <b><a name="ana_process"></a>Analysis Services Processing</b><br>
+    * enables us to process objects in analysis services. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * can include cube, dimension &amp; data mining models. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    <br>
+    <b><a name="bulkinsert"></a>Bulk Insert<br>
+    </b>* enables u to insert data from flat/text file into a SQL Server
+    d/b table/view . [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * in the same high-octane manner as using BULK INSERT statement or
+    bcp.exe (bcp utility) command-line tool. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>* bulk insert is the fastest way to move large amount of data into SQL table. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    <b><br>
+      CDC control <br><span style="font-weight: bold;"></span></b>* used to implement change data capture for a table within int services.<br>* cdc process require two int services p/cs.<b><span style="font-weight: bold;"></span><br>
+      <br>
+      <a name="data_flow"></a>Data Flow<br>
+    </b>* data flow SSIS toolbox contains 3 types of items [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">san1</a>]
+    <ol>
+      <li><a href="sources.html">Data flow sources</a></li>
+      <li><a href="transformations.html">Data flow transformations</a><br>
+      </li>
+      <li><a href="sources.html">Data flow Destinations</a></li>
+    </ol>
+    <p>* Data flow <br>
+    </p>
+    <b><br>
+    </b><br>
+    <a name="datamining"></a><b>Data Mining<br></b>* lets us execute a data mining expressions (DMX) query against an existing data mining structure. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * enables u to run predictive queries against ur analysis services
+    data-mining models &amp; output the results to a data source.<br>
+    * similar to Analysis Service Execute DDL in that u can execute
+    subsequent mining queries against a processed mining model in
+    analysis server.<br>
+    <b><br>
+      <br>
+      <br>
+    </b><b><a name="dataprofiler"></a>Data Profiling<br>
+    </b>* gathers information about the set of data [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * can be used to determine information about the particular set of
+    data we intend to process through an int services p/c [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>*<a href="#profiling_oprs"> profiling operations</a> u can do with this task. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>* data profiling task outputs its findings to an XML file. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>&nbsp;&nbsp;&nbsp; * this xml file can b viewed using data profile viewer. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br><br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br><br>
+    * data profiling is the process of examining data and collecting
+    metadata about quality of data.<br>
+    * this type of analytical activity is important for overall quality
+    &amp; health of an operational data store (ODS) or DWH.<br>
+    * rather than use a set of complicated queries or rely on
+    third-party product, v have a data profiling task.<br>
+    * it is more of an ad hoc tool for placement in design-time package
+    that will be run manually outside of the scheduled process<br>
+    * task doesn't have built in conditional workflow logic (technically
+    u can use XPath queries on the results)<br>
+    <br><a name="profiling_oprs"></a>following <span style="font-weight: bold;">profiling operations</span> can be done using this task: [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>1. candidate key profile request<br>2. column length distribution profile request<br>3. column null ratio profile request<br>4. column pattern profile request<br>5. column statistics profile request<br>6. column value distribution profile request<br>7. functional dependency profile request<br>8. value inclusion profile request<br><br><br>
+    <br>
+    <b><a name="executepackage"></a>Execute Package<br>
+    </b>* let u execute a different int p/c [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * p/c containing 'Execute Package' task is parent p/c &amp; p/c
+    being executed is child p/c [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * enables u to build SSIS solutions called parent packages that
+    execute other packages called child packages.<br>
+    * separating packages into discrete functional workflows enables
+    shorter development &amp; testing cycles and facilitates best
+    development practices.<br>
+    <br>
+    <b><br>
+    </b><b><a name="executeprocess"></a>Execute Process<br></b>* enable us to execute a program or a batch file as part of int services p/c. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * will execute a windows application or console application inside
+    the control flow.<br>
+    <br>
+    <b><br>
+      <a name="executesql"></a>Execute SQL<br></b>* enables us to execute SQL statements or stored procedures. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>* one of the most widely used tasks in SSIS for interacting with
+    RDBMS data source.<br>* variables can be used for input, output, or input/output parameters &amp; return values. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb1</a>]<br>
+    * used for all sort of things<br>
+    <b><br><a name="expression"></a>Expression<br><br>
+      <br>
+    </b><b><a name="filesystem"></a>File System</b><br>
+    * is a configurable GUI component that performs file operations
+    available in System.IO.File .Net class.<br>
+    * If u are used to coding in VBScript, this is an out-of-the-box
+    replacement for the VBScript utility classes that you used to write
+    using the COM-based FileSystemObject. <br>
+    * In either case, the File System Task can perform basic file
+    operations such as the following:<br>
+    <ol>
+      <li>copy d/y</li>
+      <li>copy file</li>
+      <li>create d/y</li>
+      <li>delete d/y</li>
+      <li>delete d/y content</li>
+      <li>delete file</li>
+      <li>mv d/y</li>
+      <li>mv file</li>
+      <li>rename file</li>
+      <li>set attributes<br>
+      </li>
+    </ol>
+    <b><a name="ftp"></a>FTP</b><br>
+    * enables use of FTP in ur package development tasks.<br>
+    * this task nw exposes more FTP command capability, enabling u 2
+    create or remove local &amp; remote d/ys &amp; files.<br>
+    * another change from DTS FTP is the capability to use FTP in
+    passive mode.<br>
+    <br>
+    <b><a name="messagequeue"></a>Message Queue</b><br>
+    * <br>
+    <br>
+    <b><a name="script"></a>Script<br>
+    </b>* enables u to access ms visual studio tools for applications
+    (VSTA) environment to write scripts using VB &amp; C#<br>
+    * scripting now a misnomer (coz the latest SSIS edition solidifies
+    the connection to the full .NET 4.0 libraries for both VB &amp; C#)<br>
+    * configured through Script tab in Script Task Editor<br>
+    * <b>ScriptLanguage </b>property is where u select .NET language u
+    want to use in task. Default is C#<br>
+    <br>
+    Properties<br>
+    <ol>
+      <li>EntryPoint</li>
+      <li>ReadOnlyVariables</li>
+      <li>ReadWriteVariables</li>
+    </ol>
+    <br>
+    <b><a name="Web_Services"></a>Web Services<br>
+    </b>* use to retrieve XML-based result sets by executing a method on
+    a web service. <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <b><a name="XML"></a>XML<br>
+    </b>* used when u need to validate, modify, extract or even create
+    files in an XML format.<br>
+    <br>
+    <p><br>
+    </p>
+    <p><b>Books:<br></b>[sanb1] <span style="font-weight: bold;">Professional Microsoft SQL Server 2014 Integration Services</span> [<a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Microsoft-SQL-Server-2014-Integration-Services.productCd-1118850874.html" target="_blank">http://www.wrox.com/WileyCDA/WroxTitle/Professional-Microsoft-SQL-Server-2014-Integration-Services.productCd-1118850874.html</a>]<b><br><span style="font-weight: bold;"></span><br></b>[sanb2]<br><span style="font-weight: bold;">
+    Delivering Business Intelligence With Microsoft SQL Server 2016,
+    Fourth Edition</span><br>
+    [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group</a>]
+    <span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;"></span></p>
+  </body></html>

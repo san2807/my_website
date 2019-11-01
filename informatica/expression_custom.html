@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>custom_transformation</title></head>
+
+  <body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <b><b><a href="#expression">Expression t/n</a><br>
+      </b></b><b><a href="#filter"><b><b>Filter t/n</b></b></a><font size="+2"><br>
+        <br>
+        <a name="expression"></a>Expression t/n</font><br>
+      <br>
+    </b>* use to calculate values in a single row.<br>
+    * for e.g. u might need to adjust salaries, concatenate first and
+    last names or convert strings to numbers.<br>
+    * can also use to test conditional statements before u pass results
+    to a target or other transformations.<br>
+    * use to perform non-aggregate calculations. (to perform calc on
+    multiple rows, such as sums or averages, use AGGREGATOR t/n)<br>
+    <br>
+    <b>Expression t/n components<br>
+    </b>* Transformation<br>
+    * Ports<br>
+    * Properties<br>
+    * Metadata Extensions<br>
+    <br>
+    <b>configuring ports</b><br>
+    * port name<br>
+    * datatype, precision, scale<br>
+    * port type<br>
+    * expression<br>
+    * default value &amp; description<br>
+    <br>
+    <b>calculate values</b><br>
+    * to calculate values of a single row using expression t/n, u must
+    include following ports:<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * input or input/output ports<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * output ports<br>
+    <br>
+    <br>
+    <font size="+2"><b><a name="filter"></a>Filter t/n<br>
+      </b></font>* use to filter out rows in a mapping<br>
+    * as an active t/n, it may change the no. of rows passed through it.<br>
+    * it drops rows that do not meet conditions.<br>
+    * can filter data based on one or more conditions.<br>
+    * it returns TRUE or FALSE for each row that int service evaluates.<br>&nbsp;&nbsp;&nbsp; * for each row that returns TRUE, int service pass through t/n<br>&nbsp;&nbsp;&nbsp; * for each row that returns FALSE, int service drops and writes a
+    message to session log.<br>
+    * can not concatenate ports from more than one t/n into filter t/n<br>
+    * place filter t/n as close to sources in mapping as possible <font color="#ff0000">to maximize session performance.<br><br><span style="color: black;">* there is an alternative to filter t/n. that is source qualifier. &nbsp;</span></font>[<a href="http://etllabs.com/informatica/informatica-filter-10-scenarios/4540/#">sanref1</a>]<br><font color="#ff0000"><span style="color: black;">&nbsp;&nbsp;&nbsp;
+* source qualifier can also filter the records but there is constraint
+that it only works for relational sources.<br><br>* see some scenarios given in </span></font>[<a href="http://etllabs.com/informatica/informatica-filter-10-scenarios/4540/#">sanref1</a>]<br>
+    <br>
+    <b>filter t/n components</b><br>
+    * transformation<br>
+    * ports<br>
+    * properties<br>
+    * metadata extensions<br>
+    <br>
+    <b>Ports tab<br>
+      <br>
+      filter condition<br>
+      * <br>
+    </b><br><br><br><br>References:<br>[sanref1] [<a href="http://etllabs.com/informatica/informatica-filter-10-scenarios/4540/#">http://etllabs.com/informatica/informatica-filter-10-scenarios/4540/#</a>]<br>
+  </body></html>

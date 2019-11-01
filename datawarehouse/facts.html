@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>facts</title></head><body><h2><span style="font-weight: bold;">Facts</span></h2><br><br><b>Granularity </b>[<a href="http://www.1keydata.com/datawarehousing/fact-table-granularity.html">1</a>]<br>
+    * first step in designing a fact table is to determine the
+    granularity of the fact table.<br>
+    * by granularity, v mean the lowest level of information that will
+    be stored in the fact table.<br><br>Grain<br>* declaring grain is pivotal step in dimensional design.<br>* grain establishes what a single fact table row represents<br>* grain declaration becomes a binding contract on the desingn<br>* grain must be declared before choosing facts or dimensions <br>
+    <br>
+    <b>Type of facts</b> [<a href="http://www.1keydata.com/datawarehousing/fact-table-types.html">1</a>]<br>
+    * there r 3 types of facts<br>
+    &nbsp;&nbsp;&nbsp; * <a href="datawarehouse.html#additive_facts">additive</a><br>
+    &nbsp;&nbsp;&nbsp; * semi-additive<br>
+    &nbsp;&nbsp;&nbsp; * non-additive<br>
+    <br>
+    <a name="additive_facts"></a>additive facts<br><br><br><span style="font-weight: bold;">conform facts</span><br>*
+if the same measurement appears in seprate fact tables, care must be
+taken to make sure technical definitions of the facts r identical if
+they <br>&nbsp;&nbsp; r to be compared or computed togather [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>]<br><br><span style="font-weight: bold;">transaction facts tables</span><br><span style="font-family: Calibri;">* a row in transaction fact table corresponds to a measurement event at a point in space &amp; time [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>]</span><br><br><span style="font-weight: bold;">periodic snapshot fact tables</span><br>* row in periodic snapshot fact table summarizes many measurement events occuring over a period, such as day,week, or month. [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>] <br>* grain is the period not a month. [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>] <br><br><span style="font-weight: bold;">factless fact tables</span><br>*
+although most measurement events capture results, it is possible that
+event merely records a set of dimensional entities coming together<br>&nbsp;&nbsp;&nbsp; at a moment in time. [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>]<br><br><span style="font-weight: bold;">aggregate fact tables or olap cubes</span><br>* r simple numeric roll ups of atomic fact table data built solely to accelerate query performance. [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>]<br><br><span style="font-weight: bold;">consolidated fact tables</span><br>*
+combine facts from multiple processes together into a single
+consolidated fact table if they can be expressed at the same grain. [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>]<br><br><br><br><span style="font-weight: bold;">Books:</span><span style="font-weight: bold;"><br></span>[<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb1</a>] [<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/</a>]&nbsp;<span style="font-weight: bold;">The Data Warehouse Toolkit, 3rd Edition</span><br>[<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/" target="_blank">sanb2</a>]
+    [<a href="https://www.mhprofessional.com/9780071744324-usa-star-schema-the-complete-reference-group">https://www.mhprofessional.com/9780071744324-usa-star-schema-the-complete-reference-group</a>]
+    <span style="font-weight: bold;">Star Schema The Complete Reference </span><br></body></html>

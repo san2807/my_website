@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>repository</title></head>
+<body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b"><font face="Verdana" size="-1"><span style="font-weight: bold;"></span></font>&nbsp;<b>Repository (also called repository database)<br>
+      <br>
+    </b>* powercenter repository <font color="#ff0000">is a relational
+      database</font> managed by repository service.<br>
+    * repository consists of database tables that stores metadata.<br>
+    * metadata describes different types of objects, such as mappings
+    &amp; transformations (created using powercenter client tools)<br>
+    * int service uses repository objects to ETL data.<br>
+    * repository d/b tables contain instructions required to extract,
+    transform and load data.<br>
+    * repository also stores information such as permissions for users.<br>
+    <br>
+    * all repository clients access repository d/b tables through
+    repository service.<br>
+    * each repository service manage a single repository.<br>
+    * a repository service process is an instance of repository service
+    that runs on a particular machine or node.<br>
+    * repository service protects metadata in repository.<br>
+    <br>
+    <br>
+    <br>
+    <b>repository architecture<br>
+      <br>
+      <br>
+      repository connectivity<br>
+    </b>* repository clients such as power center clients, int service,
+    pmrep and infacmd connect to repository through rep service<br>
+    * repository clients communicate with rep service through a
+    specified port over a TCP/IP connection.<br>
+    * configure port when u install rep service.<br>
+    * as PC services can reside on multiple nodes in domain, rep service
+    relies on another service called SERVICE manager to direct client
+    requests to appropriate rep service process.<br>
+    <br>
+    <u>hw repository client connect to rep d/b<br>
+    </u>* rep client sends a rep connection request to master gateway
+    node, which is entry point to domain.<br>
+    *<br>
+    *<br>
+    *<br>
+    <br>
+    <b>understanding metadata<br>
+    </b>* rep stores metadata that describes how to extract, transform
+    and load source and target data.<br>
+    <br>
+    <u>repository objects create through Designer</u><br>
+    1. source definitions<br>
+    2. target definitions<br>
+    3. transformations<br>
+    4. reusable transformations<br>
+    5. mappings<br>
+    6. mapplets<br>
+    7. user-defined functions<br>
+    8. multi-dimensional metadata<br>
+    <br>
+    <u>repository objects create through Workflow Manager<br>
+    </u>1. database connections<br>
+    2. sessions<br>
+    3. workflows<br>
+    4. workflow tasks<br>
+    5. worklets<br>
+    <br>
+    <b>repository object locks<br>
+    </b>* repository uses locks to prevent users from duplicating or
+    overwriting work.<br>
+    * rep service creates following types of locks on rep objects when u
+    view/edit or run them in workflow<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * in-use lock<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * write-intent lock<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * execute lock<br>
+    <br>
+    <b>modifying dependent objects<br>
+    </b>* when u modify a child object, u may cause a parent object to
+    become invalid.<br>
+    * for e.g. if u modify a mapping by changing a port datatype to a
+    incompatible datatype, session may become invalid.<br>
+    <br>
+    <br>
+    <br>
+    <b>version control<br>
+    </b>* if u have team-based development option, u can enable version
+    control for repository <br>
+    * a versioned rep stores multiple version of an object.<br>
+    <br><br><font face="Verdana" size="-1"><span style="font-weight: bold;">Books:</span><br>[<a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-informatica-powercenter-9x">sanb1</a>] [Learning Informatica PowerCenter 9.x -Rahul Malewar] [<a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-informatica-powercenter-9x">https://www.packtpub.com/big-data-and-business-intelligence/learning-informatica-powercenter-9x</a>]<br><br><span style="font-weight: bold;">Documentation:<br><br><br><br>References:</span></font><font face="Verdana" size="-1"><span style="font-weight: bold;"></span></font><br>
+  </body></html>

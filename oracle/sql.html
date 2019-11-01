@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>sql</title></head>
+<body style="margin-top: 0px; height: 2629px; background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b"><h2>SQL</h2><a href="query.html"><b>Queries</b></a><br>
+    <br>
+    <a href="function.html"><b>SQL Functions</b></a><br><b><br>Set Operators</b><br>
+    UNION<br>
+    UNION ALL<br>
+    MINUS<br>
+    INTERSECTION<br>
+    <br>
+    <b>JOINS</b><br>
+    * INNER JOIN<br>
+    * LEFT OUTER JOIN<br>
+    * RIGHT OUTER JOIN<br>
+    <br>
+    GROUP BY<br>
+    HAVING<br>
+    <br>
+    <a href="file:///C:/sandeep/my_website/oracle/oracle.html#pivot" target="_blank">PIVOT</a><br>
+    <a href="file:///C:/sandeep/my_website/oracle/oracle.html#unpivot">UNPIVOT</a><br>
+    <br>
+    <b><br>
+      <br>
+    </b><a href="file:///C:/sandeep/my_website/oracle/oracle.html#tuning">Performance Tuning</a><b><br>
+    </b> <br>
+    <br>
+    Select modified data from 2 same tables and then update [<a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9533976300346701825">1</a>]<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    first day of the month [<a href="http://viralpatel.net/blogs/useful-oracle-queries/">1</a>]<br>
+    ======================================<br>
+    select TRUNC (to_date('25-Mar-2017'), 'MONTH') "First day of current
+    month"<br>
+    FROM DUAL<br>
+    <br>
+    last day of the month [<a href="http://viralpatel.net/blogs/useful-oracle-queries/">1</a>]<br>
+    =======================================<br>
+    SELECT TRUNC (LAST_DAY (SYSDATE)) "Last day of current month" <br>
+    FROM DUAL;<br>
+    <br>
+    first day of the year [<a href="http://viralpatel.net/blogs/useful-oracle-queries/">1</a>]<br>
+    =======================================<br>
+    SELECT TRUNC (SYSDATE, 'YEAR') "Year First Day" <br>
+    FROM DUAL;<br>
+    <br>
+    last day of the year [<a href="http://viralpatel.net/blogs/useful-oracle-queries/">1</a>]<br>
+    =======================================<br>
+    SELECT ADD_MONTHS (TRUNC (SYSDATE, 'YEAR'), 12) - 1 "Year Last Day"
+    <br>
+    FROM DUAL<br>
+    <br>
+    number of days in current month [<a href="http://viralpatel.net/blogs/useful-oracle-queries/">1</a>]<br>
+    =======================================<br>
+    SELECT CAST (TO_CHAR (LAST_DAY (SYSDATE), 'dd') AS INT)
+    number_of_days<br>
+    FROM DUAL;<br>
+    <br>
+    <br>
+    database version<br>
+    ============<br>
+    select * from v$version<br>
+    <br>
+    actual database size in GB<br>
+    ====================<br>
+    select sum(bytes) / 1024 /1024 /1024 as GB<br>
+    from dba_data_files<br>
+    <br>
+    space occupied by data in a database or database usage details<br>
+    ============================================<br>
+    select sum(bytes) / 1024 / 1024 / 1024 as GB<br>
+    from dba_segments<br>
+    <br>
+    <br>
+    <br>
+    show the progress of long running queries<br>
+    ===============================<br><font style="color: blue;" size="-1">SELECT a.sid,<br>&nbsp; a.serial#,<br>&nbsp; b.username,<br>&nbsp; opname OPERATION,<br>&nbsp; target OBJECT,<br>&nbsp; TRUNC (elapsed_seconds, 5) "ET (s)",<br>&nbsp; TO_CHAR (start_time, 'HH24:MI:SS') start_time,<br>&nbsp; ROUND ( (sofar / totalwork) * 100, 2) "COMPLETE (%)"<br>FROM v$session_longops a,<br>&nbsp; v$session b<br>WHERE a.sid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = b.sid<br>&nbsp; AND b.username NOT IN ('SYS', 'SYSTEM')<br>&nbsp; AND totalwork&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; 0<br>ORDER BY elapsed_seconds;</font><br>
+    <br>
+    find last record from the table<br>
+    ======================<br><font size="-1"><span style="color: blue;">SELECT * </span><br style="color: blue;"><span style="color: blue;">FROM employees </span><br style="color: blue;"><span style="color: blue;">WHERE rowid IN(SELECT MAX(rowid) </span><br style="color: blue;"><span style="color: blue;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; FROM employees )</span></font><br>
+    <br>
+    multiply row data of a table &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; [<a href="http://viralpatel.net/blogs/row-data-multiplication-in-oracle/">http://viralpatel.net/blogs/row-data-multiplication-in-oracle/</a>]<br>
+    deleting duplicate rows &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; [<a href="http://viralpatel.net/blogs/deleting-duplicate-rows-in-oracle/">http://viralpatel.net/blogs/deleting-duplicate-rows-in-oracle/</a>]<br>
+    How To Convert Number into Words using Oracle SQL Query
+    &nbsp;&nbsp;&nbsp; [<a href="http://viralpatel.net/blogs/convert-number-into-words-oracle-sql-query/">http://viralpatel.net/blogs/convert-number-into-words-oracle-sql-query/</a>]<br>
+    <b><br>
+      <br>
+    </b><br>
+    <b>GROUP BY<br>
+    </b>* used in SELECT statement to collect data across multiple
+    records and group the results by one or more columns [<a href="https://www.techonthenet.com/oracle/group_by.php">1</a>]<br>
+    <b> <br>
+      e.g.<br>
+    </b>SQL join tables with group by and order by [<a href="http://www.w3resource.com/sql/joins/joining-with-group-by-and-order-by.php">1</a>]<br>
+    <b><br>
+      <br>
+      <br>
+      SET OPERATORS<br>
+    </b>* ORDER BY clause can appear only once at the end of the query
+    containing compound SELECT statement [<a href="https://www.tutorialspoint.com/sql_certificate/using_the_set_operators.htm">1</a>]<br>
+    * individual SELECT statement can not have ORDER BY clause [<a href="https://www.tutorialspoint.com/sql_certificate/using_the_set_operators.htm">1</a>]<br>
+    * sorting can be based on the columns which appear in the first
+    SELECT query only.<br>
+    &nbsp;&nbsp;&nbsp; for this reason it is recommended to sort the
+    compound query using column position [<a href="https://www.tutorialspoint.com/sql_certificate/using_the_set_operators.htm">1</a>]<br>
+    <b><br>
+      <a name="pivot"></a>PIVOT<br>
+      <br>
+    </b>* introduced in 11g<br>
+    * lets u write cross tabulation queries that rotate rows into
+    columns while aggregating data in the rotation process.<br>
+    * also called transposed, crosstab or matrix queries.<br>
+    <br>
+    <br>
+    <b><br>
+    </b>PIVOT and UNPIVOT Operators in Oracle Database 11g Release 1 [<a href="https://oracle-base.com/articles/11g/pivot-and-unpivot-operators-11gr1">1</a>]<br>
+    Oracle Database 11g: The Top Features for DBAs and Developers [<a href="http://www.oracle.com/technetwork/articles/sql/11g-pivot-097235.html">1</a>]<br>
+    <b><br>
+      <br>
+      <br>
+      <br>
+    </b><br>
+    <b><a name="unpivot"></a>UNPIVOT</b> <br>
+    <br>
+    * introduced in 11g<br>
+    * is a sql operation that rotates data from columns into rows [<a href="http://www.orafaq.com/wiki/UNPIVOT">1</a>]<br><br><br><span style="font-weight: bold;">Create table</span><br>* to create a new table with same structure as an existing table use CTAS [<a href="http://sql-plsql.blogspot.com.au/2007/03/sql-insert.html">sanref2</a>]<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; create table new_table <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; as<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; select * &nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; from old_table<br><br><span style="font-weight: bold;">Insert</span><br>* inserts a new row in d/b [<a href="http://sql-plsql.blogspot.com.au/2007/03/sql-insert.html">sanref2</a>]<br><br><br>INNER JOIN<br><br><br><span style="font-weight: bold;">Rownum</span><br>* use it to perform top-N processing [<a href="http://www.oracle.com/technetwork/issue-archive/2006/06-sep/o56asktom-086197.html" target="_blank">sanref3</a>] <br>* use rownum to paginate through a query [<a href="http://www.oracle.com/technetwork/issue-archive/2006/06-sep/o56asktom-086197.html" target="_blank">sanref3</a>]<br><br><span style="font-weight: bold;"></span><br><br><br><br>[sanref1] [<a href="http://mll.csie.ntu.edu.tw/course/database_f07/assignment/Solutions/assignment3_solution.pdf" target="_blank">http://mll.csie.ntu.edu.tw/course/database_f07/assignment/Solutions/assignment3_solution.pdf</a>]<br>[sanref2] [<a href="http://sql-plsql.blogspot.com.au" target="_blank">http://sql-plsql.blogspot.com.au</a>]<br>[sanref3] [<a href="http://www.oracle.com/technetwork/issue-archive/2006/06-sep/o56asktom-086197.html" target="_blank">http://www.oracle.com/technetwork/issue-archive/2006/06-sep/o56asktom-086197.html</a>]<br>[<a href="http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/">http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/</a>] Basic SQL join semantics<br><br>[<a href="http://www.dba-oracle.com/t_advanced_sql_hierarchical_queries.htm">http://www.dba-oracle.com/t_advanced_sql_hierarchical_queries.htm</a>] <br>[<a href="https://asktom.oracle.com/pls/apex/asktom.search?tag=outer-join-concept-20080612101651">https://asktom.oracle.com/pls/apex/asktom.search?tag=outer-join-concept-20080612101651</a>] Outer Join Concept<br>[<a href="https://asktom.oracle.com/pls/apex/asktom.search?tag=query-regarding-join-order-in-ansi">https://asktom.oracle.com/pls/apex/asktom.search?tag=query-regarding-join-order-in-ansi</a>]<br><br><br>
+</body></html>

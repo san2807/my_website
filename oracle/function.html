@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>function</title></head>
+<body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b"><h2><b>SQL Functions (f/n)</b></h2>* sql functions r built into oracle d/b &amp; r available for use in various appropriate sql statements.<br><br><span style="font-weight: bold;">Single row functions</span><br>* return a single result row for each row of a queried t/b or view.<br>* can appear in select lists, WHERE clause, START WITH &amp; CONNECT BY clauses, HAVING clauses.<br><br>1. numeric f/ns<br>2. character f/ns returning character values<br>3. character f/ns returning number values<br>4. NLS character f/ns<br>5. datetime f/ns<br>6. general comparison f/ns<br>7. conversion f/ns<br>8. large object f/ns<br>9. collection f/ns<br>10. hierarchical f/ns<br>11. data mining f/ns<br>12. xml f/ns<br>13. encoding &amp; decoding f/ns<br>14. null-related f/ns<br>15. enviornment &amp; identifier f/ns<br><br><br><span style="font-weight: bold;">Aggregate functions</span><br>* returns a single result row based on the goups of rows<br>* can appear in select, orderby or having clause<br>* commonly used with GROUP BY clause<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; in as SELECT statement where d/b divides rows of queried table/view into groups.<br><br><span style="font-weight: bold;">Analytic Functions</span><br>* compute an aggreate value based on group of rows<br>* differ from aggregate functions <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; as they return multiple rows for each group.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; group of rows is called <span style="font-weight: bold;">window</span><br>* for each row, a sliding window is defined <br>* window determines the range of rows used to perform the calculations for the current row.<br>* window size can based on either a physical no. of rows or a logical interval (such as time)<br>* analytic functions r the last set of operations performed in a query except final ORDER BY clause.<br><br><br><span style="font-weight: bold;"></span><table style="border-collapse: collapse; width: 376px; height: 1098px;" border="3" cellpadding="1" cellspacing="1"><col style="width: 56pt;" width="75">
+ <col style="width: 115pt;" width="153">
+ <col style="width: 122pt;" width="162">
+ <tbody><tr style="height: 15pt;" height="20">
+  <td class="xl67" style="height: 15pt; width: 100px;">&nbsp;</td>
+  <td class="xl65" style="border-left: medium none; width: 115pt; font-weight: bold;">Aggregate f/ns</td>
+  <td class="xl65" style="border-left: medium none; width: 122pt; font-weight: bold;" width="162">Analytics f/ns</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">1</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">AVG</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">AVG *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">2</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">COLLECT</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">3</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">CORR</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">CORR *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">4</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">CORR_*</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">5</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">COUNT</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">COUNT *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">6</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">COVAR_POP</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">COVAR_POP *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">7</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">COVAR_SAMP</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">COVAR_SAMP *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">8</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">CUME_DIST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">CUME_DIST</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">9</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">DENSE_RANK</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">DENSE_RANK</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">10</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">FIRST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">FIRST</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">11</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">GROUP_ID</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">FIRST_VALUE *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">12</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;"><a href="agg_analytic.html">LAG</a></td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">13</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">GROUPING</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">14</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">GROUPING_ID</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">15</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">LAST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">LAST</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">16</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">LISTAGG</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">LAST_VALUE *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">17</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">LEAD</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">18</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">LISTAGG</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">19</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">MAX</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">MAX *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">20</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">MEDIAN</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">21</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">MIN</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">MIN *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">22</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">NTH_VALUE*</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">23</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">NTILE</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">24</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">PERCENT_RANK</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">PERCENT_RANK</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">25</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">PERCENTILE_CONT</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">PERCENTILE_CONT</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">26</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">PERCENTILE_DISC</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">PERCENTILE_DISC</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">27</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">RANK</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">RANK</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">28</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">RATIO_TO_REPORT</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">29</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">REGR_ (Linear
+  Regression)</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">REGR_ (Linear
+  Regression) *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">30</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_BINOMIAL_TEST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">ROW_NUMBER</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">31</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_CROSSTAB</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">32</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_F_TEST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">33</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_KS_TEST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">34</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_MODE</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">35</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_MW_TEST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">36</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_ONE_WAY_ANOVA</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">37</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_T_TEST_*</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">38</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STATS_WSR_TEST</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">39</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STDDEV</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STDDEV *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">40</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STDDEV_POP</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STDDEV_POP *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">41</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STDDEV_SAMP</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">STDDEV_SAMP *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">42</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">SUM</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">SUM *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">43</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">SYS_XMLAGG</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">44</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">VAR_POP</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">VAR_POP *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">45</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">VAR_SAMP</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">VAR_SAMP *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">46</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">VARIANCE</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">VARIANCE *</td>
+ </tr>
+ <tr style="height: 15pt;" height="20">
+  <td class="xl67" style="border-top: medium none; height: 15pt;" height="20">47</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">XMLAGG</td>
+  <td class="xl66" style="border-top: medium none; border-left: medium none;">&nbsp;</td>
+ </tr></tbody></table><br><br><br><br><br><br><span style="font-weight: bold;">AVG</span><br><br><img style="width: 582px; height: 133px;" alt="avg" src="avg.PNG"><br><br><br>CHR()<br>[<a href="http://www.oracletutorial.com/oracle-string-functions/oracle-chr/">http://www.oracletutorial.com/oracle-string-functions/oracle-chr/</a>] Oracle CHR<br><br><br><br><br><br><br><br></body></html>

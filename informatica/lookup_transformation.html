@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>lookup_transformation</title></head>
+
+  <body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <h2><b>Lookup Transformation</b></h2>
+    * use to look up data in a flat file, relational table, view or
+    synonym.<br>
+    * works on similar lines as joiner, with few differences like lookup
+    does not require two sources.<br>
+    * <br>
+    <br>
+    Business purpose [<a href="http://tekslate.com/lookup-transformation-in-informatica-with-examples/">1</a>]<br>
+    * source table/file may have some records with incomplete data. <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * Missing data can be filled
+    by performing a lookup to another table/file.<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * as only some rows are
+    affected its better to perform lookup on only those rows that need
+    it and not entire data set.<br>
+    <br>
+    <b>Uses of lookup t/n (</b><b>tasks lookup transformation can perform)</b><br>
+    * get a related value.<br>
+    * get multiple values<br>
+    * perform a calculation&nbsp;&nbsp;&nbsp; <br>
+    * update SCD tables.<br>
+    <b><br>
+    </b><b>types of lookup</b><br>
+    * relational or flat file lookup<br>
+    * <a href="#pipeline">pipeline lookup</a><br>
+    * <a href="#connected">connected</a> or <a href="#unconnected">unconnected
+
+
+
+
+
+
+    </a>lookup<br>
+    * cached or uncached lookup<br>
+    <br>
+    <b>relational lookup</b><br>
+    * connect to lookup source using ODBC and import table definition as
+    structure for lookup transformation.<br>
+    * options:<br>
+    &nbsp;&nbsp;&nbsp; * override<br>
+    &nbsp;&nbsp;&nbsp; * sort null data<br>
+    &nbsp;&nbsp;&nbsp; * perform case-sensitive comparisons<br>
+    <br><span style="font-weight: bold;">
+    flat file lookup</span><br>
+    <p><br>
+      <a name="pipeline"></a><b>pipeline lookup </b><br>
+      * to perform a lookup on an application source that is not a
+      relational table or flat file.<br>
+    </p>
+    <p><br>
+    </p>
+    <p><b><a name="connected"></a>Connected lookup t/n<br>
+      </b>how connected lookup transformation process : <br>
+    </p>
+    <p><br>
+      <b><a name="unconnected"></a>Unconnected lookup t/n<br>
+        * </b>neither connected to source nor to target. [<a href="http://tekslate.com/lookup-transformation-in-informatica-with-examples/">1</a>]<br>
+      * receives input value from the result of :LKP expression in
+      another transformation (such as expression, aggregator or update
+      strategy transformation)<br>
+      * can call more than once in a mapping.<br>
+      * common use is to update SCD tables.<br>
+      * output port is designated by return port (R) [<a href="http://tekslate.com/lookup-transformation-in-informatica-with-examples/">1</a>]<br>
+      * :LKP expression passes parameter to the Lookup transformation
+      and receives as result back from the lookup [<a href="http://a2zinformatica.blogspot.in/2015/01/unconnected-lookup-transformation-is.html">1</a>]<br>
+      * if there is no match for lookup condition, int service return
+      NULL [<a href="http://a2zinformatica.blogspot.in/2015/01/unconnected-lookup-transformation-is.html">1</a>]<br>
+      * unlike connected lookup, it can use only Static cache.<br>
+    </p>
+    <p><br>
+      <b>Lookup t/n components</b><br>
+      1. <a href="#lookup_source">Lookup ka source</a><br>
+      2. Ports<br>
+      3. Properties<br>
+      4. Condition<br>
+    </p>
+    <p><a name="lookup_source"></a><b>lookup source</b><br>
+      * use flat file, relational table or source qualifier.<br>
+      * can create lookup source from below locations:<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * relational source or
+      target definition in repository.<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * flat file source or target
+      definition in repository.<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * table or file that int
+      service &amp; powercenter client machine can connect to<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * source qualifier in
+      mapping<br>
+    </p>
+    <p><br><span style="font-weight: bold;">
+      lookup ports</span><br>
+    </p>
+    
+    <p><span style="font-weight: bold;">lookup properties</span></p><p><span style="font-weight: bold;"></span><br><br><span style="font-weight: bold;">
+      lookup query</span><br>
+    </p>
+    <p><span style="font-weight: bold;">lookup condition</span><br>
+    </p>
+    
+    <p><b>Lookup Cache</b><br>
+      * can configure lookup transformation to cache lookup file or
+      table.<br>
+      * int service build cache in memory when it processes
+      first row of data in a cached lookup transformation.<br>
+      * int service allocates memory based on amount configure in lookup
+      transformation properties or session properties.<br>
+      * int service stores condition in index cache.<br>
+      * int service stores output in data cache.<br>
+      * int service queries cache for each row that enters
+      transformation.<br>
+      * int service creates cache files in $PMCacheDir by default.<br>
+      * int service stores overflow values in cache files (if data does
+      not fit in memory cache).<br>
+      * int service releases cache memory and deletes cache files unless
+      you configure lookup transformation to use a persistent cache.</p><p>
+      <b>create lookup t/n</b><br>
+      * create reusable in transformation developer.<br>
+      * create non-reusable in mapping designer.</p><p>
+      <b>Dynamic Lookup Cache<br>
+      </b>* can use with relational lookup, flat file lookup or a
+      pipeline cache.<br>
+      * dynamic cache <font color="#3333ff"><b>represents </b></font>data
+
+
+
+
+
+
+      in target<br>
+    </p>
+    <p>Dynamic Lookup Properties<br>
+    </p>
+    <p><span style="font-weight: bold;">Active Lookup t/n</span><br>
+      * when lookup transformation return all matching records from the
+      lookup table its called active lookup t/n.<br>
+    </p>
+    <p><b>Tips:</b><br>
+      * add an index to the columns in condition.<br>
+      * place condition with = operator first.<br>
+      * cache small lookup tables.<br>
+      * join tables in database.<br>
+      * use persistent lookup cache for static lookup.<br>
+      * call unconnected lookup with :LKP&nbsp; reference qualifier.<br>
+      * configure pipeline lookup transformation to improve performance
+      when processing a relational or flat file lookup source.<br>
+    </p>
+    <p><br>
+      <b>Performance tuning of lookup transformation<br>
+      </b>* lookup transformation slows down the performance. [<a href="#3">3</a>]<br>
+      * to improve performance cache the lookup tables.<br>
+      * even after caching, performance can be further improved by
+      minimizing the size of looup cache.<br>
+      * reduce number of cached rows by using sql override with a
+      restriction.<br>
+      &nbsp;<br>
+    </p>
+    
+    <p><br>
+    </p>
+    <span style="font-weight: bold;">References :</span><br>
+    
+    [sanref1] [<a href="http://informatica-tutorials-for-beginners.blogspot.in/p/lookup-transformation.html">http://informatica-tutorials-for-beginners.blogspot.in/p/lookup-transformation.html</a>]<br>[sanref2]
+      [<a href="http://a2zinformatica.blogspot.in/2014/12/all-about-informatica-lookup.html">http://a2zinformatica.blogspot.in/2014/12/all-about-informatica-lookup.html</a>]
+      All About Informatica Lookup Transformation<br>[sanref3] [<a href="http://informaticachamp.blogspot.in/2015/03/scenario-26-how-to-create-or-use-active.html">http://informaticachamp.blogspot.in/2015/03/scenario-26-how-to-create-or-use-active.html</a>]
+      How to create and use active lookup transformation<br>[sanref4]
+      [<a href="http://www.tutorialgateway.org/lookup-transformation-in-informatica/">http://www.tutorialgateway.org/lookup-transformation-in-informatica/</a>]
+      Lookup Transformation in Informatica <br>[sanref5]
+      [<a href="http://informaticatutorials-naveen.blogspot.in/2011/04/lookup-transformation.html">http://informaticatutorials-naveen.blogspot.in/2011/04/lookup-transformation.html</a>]
+      LOOKUP TRANSFORMATION<br>[sanref6]
+      [<a href="http://www.sridhardwbi.com/lookup-transformation-with-scenarios-and-development-steps/116/">http://www.sridhardwbi.com/lookup-transformation-with-scenarios-and-development-steps/116/</a>]
+      <br>[<a href="https://network.informatica.com/thread/61918">https://network.informatica.com/thread/61918</a>]
+      Source Qualifier Lookup<br>
+      [<a href="https://kb.informatica.com/faq/1/Pages/19562.aspx?myk=lookup%20transformation">1</a>]
+      FAQ: Is the Lookup transformation case-sensitive?<br>
+      [<a href="https://kb.informatica.com/solution/23/Pages/51/301913.aspx?myk=lookup%20transformation">2</a>]
+      The Lookup transformation does not return all the rows that match
+      the data in the lookup condition<br>
+      [<a href="http://informaticatutorials-naveen.blogspot.in/2011/04/performance-tuning-of-lookup.html">3</a>]<a name="3"></a> PERFORMANCE TUNING OF LOOKUP TRANSFORMATIONS<br>
+    
+    <p></p><p><a name="prod"></a>create table product (prod_id number,
+      prod_name varchar2(100), price_USD varchar2(30));<br>
+      <br>
+      insert into product values (2001,'Laptop',300);<br>
+      insert into product values (2002,'Desktop',200);<br>
+      insert into product values (2003,'Mouse',20);<br>
+      <br>
+      create table currency (id number, description varchar2(50), rate
+      number);<br>
+      insert into currency values (1,'SGR',55);<br>
+      insert into currency values (1,'INR',62);<br>
+      insert into currency values (1,'EURO',42);<br>
+      <br>
+      create table target (prod_id number, prod_name varchar2(100),
+      price_USD varchar2(30), <br>
+      price_SGR varchar2(30), price_INR varchar2(30), price_EURO
+      varchar2(30));<br>
+    </p>
+  </body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>mapping</title></head>
+
+  <body style="background-color: rgb(255, 255, 204);" alink="#ee0000" link="#0000ee" text="#000000" vlink="#551a8b">
+    <a href="#mapping">Mappings</a><br>
+    <br>
+    <a href="#mapplet">Mapplets</a><br>
+    <br>
+    Mapping Parameter<br>
+    <br>
+    Mapping Variable<br>
+    <br>
+    <b><a name="mapping"></a>Mapping</b><br>
+    <br>
+    * is a <font color="#ff0000"><b>set </b></font>of source
+    definition, target definition linked by t/n objects that define
+    rules for data t/n.<br>
+    * represent data flow b/w sources &amp; targets.<br>
+    * when int services runs a s/n, it uses instructions configured in
+    mapping to read, transform &amp; write data.<br>
+    * every mapping must contain:<br>
+    <ol>
+      <li>source definition</li>
+      <li>t/n<br>
+      </li>
+      <li>target definition</li>
+      <li>links</li>
+    </ol>
+    <p>* mapping can also contain one or more mapplets.<br>
+      * mapping desinger displays objects in 3 different views:<br>
+    </p>
+    <ol>
+      <li>iconized</li>
+      <li>normal</li>
+      <li>edit</li>
+    </ol>
+    <p><br>
+    </p>
+    <p><br>
+      <b><a name="mapplet"></a>Mapplet</b><br>
+      * is a reusable object<br>
+      * can create in Mapplet Designer<br>
+      * contains set of t/ns &amp; lets u reuse t/n logic in multiple
+      mappings.<br>
+      * when u use a mapplet in a mapping, u use an instance of mapplet.<br>
+    </p>
+    <p><br>
+    </p>
+    <p><b>Mapping Parameter (p/m)</b><br>
+      * represent constant value that u can define before running a s/n.<br>
+      * retain same value throughout the s/n<br>
+      * declare &amp; use p/m in mapping/mapplet, then define value of
+      p/m in <font color="#ff0000">p/m file</font><br>
+    </p>
+    <p><br>
+    </p>
+    <p><b>Mapping Variable (v/a)</b><br>
+      * unlike p/m, mapping v/a represents a value <font color="#ff0000">that can change through s/n</font>.<br>
+      * int service saves value of v/a to rep at end each successful s/n
+      run &amp; uses tht value next time u run s/n<br>
+      * declare &amp; use v/a in mapping/mapplet, then use <font color="#ff0000">v/a function</font> in mapping to change value<br>
+      * at beginning, int service evaluates references to v/a to
+      determine start value.<br>
+      * at end of successful s/n, int service saves final value of v/a
+      to the rep<br>
+      * next time u run s/n int service evaluates references to v/a to
+      saved value<br>
+      * to override saved value:<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * define start value of v/a
+      in a p/m file<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; or<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * assign value in pre-s/n
+      v/a assignment in s/n properties.<br>
+    </p>
+  </body></html>

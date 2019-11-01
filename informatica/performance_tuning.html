@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>performance_tuning</title></head>
+<body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <h2>Performance Tuning</h2>
+    * first step is to identify performance bottlenecks.<br>
+    * it can occur in source d/bs, target d/bs, mapping, session &amp;
+    system<br>
+    * strategy should be <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; identify a performance
+    bottleneck, <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; eliminate it <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &amp; then identify next
+    performance bottleneck until u r satisfied with performance.<br>
+    * <b><font color="#3333ff">look in below order</font></b><br>
+    <ol>
+      <li>Target</li>
+      <li>Source</li>
+      <li>Mapping</li>
+      <li>Session</li>
+      <li>System<br>
+      </li>
+    </ol>
+    <b>Thread Statistics</b><br>
+    <b><br>
+    </b><b>Optimizing Target<br>
+    </b>
+    <ol>
+      <li>flat file target</li>
+      <li>dropping index &amp; key constraints</li>
+      <li>increasing d/b checkpoints intervals</li>
+      <li>using bulk loads</li>
+      <li>using external loaders</li>
+      <li>minimizing deadlocks</li>
+      <li>increasing d/b n/w packet size</li>
+      <li>optimizing ORACLE d/b target<br>
+      </li>
+    </ol>
+    <b>Optimizing Source</b><br>
+    <ol>
+      <li>optimizing query</li>
+      <li>using conditional filters</li>
+      <li>increasing d/b n/w packet size</li>
+      <li>connecting ORACLE d/b source</li>
+      <li>using TERADATA fast export</li>
+      <li>using tempdb to join in SYBASE or MS SQL Server<br>
+      </li>
+    </ol>
+    <b>Optimizing Mapping</b><br>
+    <br>
+    <b>Optimizing Transformation</b><br>
+    <ol>
+      <li> optimizing AGGREGATOR t/n</li>
+      <li>optimizing CUSTOM t/n</li>
+      <li>optimizing JOINER t/n</li>
+      <li>optimizing LOOKUP t/n</li>
+      <li>optimizing NORMALIZER t/n</li>
+      <li>optimizing SEQUENCE GENERATOR t/n</li>
+      <li>optimizing SORTER t/n</li>
+      <li>optimizing SOURCE QUALIFIER t/n</li>
+      <li>optimizing SQL t/n</li>
+      <li>optimizing XML t/n</li>
+    </ol>
+    <b>Optimizing Sessions</b><br>
+    <ol>
+      <li> grid</li>
+      <li> pushdown optimization</li>
+      <li> concurrent sessions &amp; workflow</li>
+      <li> buffer memory</li>
+      <li> caches</li>
+      <li> target-based commit</li>
+      <li> real-time processing</li>
+      <li> staging areas</li>
+      <li> log files</li>
+      <li> error tracing</li>
+      <li> post-sessions emails</li>
+    </ol><br><br><br><br>
+    <font face="Verdana" size="-1"><span style="font-weight: bold;">Books:</span><br>[<a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-informatica-powercenter-9x">sanb1</a>] [Learning Informatica PowerCenter 9.x -Rahul Malewar] [<a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-informatica-powercenter-9x">https://www.packtpub.com/big-data-and-business-intelligence/learning-informatica-powercenter-9x</a>]<br><br><span style="font-weight: bold;">Documentation:</span></font><br>
+    <br><br>
+    <b>References:<br>
+    </b>[sanref1] [<a href="https://informaticareference.wordpress.com/2011/12/06/performance-turning-of-lookup-transformations/">https://informaticareference.wordpress.com/2011/12/06/performance-turning-of-lookup-transformations/</a>]
+    Performance turning of Lookup Transformations<br>[sanref2]&nbsp;
+    [<a href="http://www.geekinterview.com/question_details/5858">http://www.geekinterview.com/question_details/5858</a>]
+    Performance tuning in Informatica?<b><br>
+    </b>[sanref3] [<a href="http://www.guru99.com/performance-tuning-transformation-informatica.html">http://www.guru99.com/performance-tuning-transformation-informatica.html</a>]
+    Performance Tuning in Informatica: Complete Tutorial<b><br>
+    </b>[sanref4] [<a href="http://dwhlaureate.blogspot.com.au/2012/07/performance-tuning-in-informatica.html">http://dwhlaureate.blogspot.com.au/2012/07/performance-tuning-in-informatica.html</a>]
+    How can we do Performance Tuning in Informatica<br>[sanref5]
+    [<a href="https://dwbi.org/etl/informatica/157-informatica-performance-tuning-complete-guide">https://dwbi.org/etl/informatica/157-informatica-performance-tuning-complete-guide</a>]
+    Informatica Performance Tuning - Complete Guide<br>
+    [sanref6] [<a href="https://dwbi.org/etl/informatica/158-tuning-informatica-lookup">https://dwbi.org/etl/informatica/158-tuning-informatica-lookup</a>]
+    How to Tune Performance of Informatica Lookup Transformation<br>
+    [sanref7] [<a href="https://dwbi.org/etl/informatica/159-tuning-informatica-joiner">https://dwbi.org/etl/informatica/159-tuning-informatica-joiner</a>]
+    How to Tune Performance of Informatica Joiner Transformation<br>
+    [sanref8] [<a href="https://dwbi.org/etl/informatica/160-tuning-informatica-aggregator">https://dwbi.org/etl/informatica/160-tuning-informatica-aggregator</a>]
+    How to Tune Performance of Informatica Aggregator Transformation<br>
+    [sanref9] [<a href="http://oracleedq.com/informatica-performance-tuning/">http://oracleedq.com/informatica-performance-tuning/</a>]
+    Everything About Informatica Performance Tuning<br>
+    [sanref10] [<a href="https://network.informatica.com/thread/42437">https://network.informatica.com/thread/42437</a>]<br>
+  </body></html>

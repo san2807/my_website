@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>router_transformation</title></head>
+
+  <body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <b>Router Transformation<br>
+      <br>
+    </b>* similar to filter transformation as both allow u to use a
+    condition to test data.<br>
+    * filter test data for one condition and drops rows of data that do
+    not meet condition.<br>
+    * router test data for one or more conditions and give you option to
+    route rows of data that do not meet any of conditions to a default
+    o/p group.<br>
+    * to test same input data based on multiple conditions, use a ROUTER
+    in mapping instead of creating multiple filter transformations to
+    perform same task.<br>
+    <br>
+    * when u use ROUTER in a mapping, int service processes incoming
+    data only once, but when u use FILTER in a mapping, int service
+    processes incoming data for each transformation.<br>
+    <br>
+    ROUTER consists of :<br>
+    * Input Ports<br>
+    * Input Group<br>
+    * Output Ports<br>
+    * Output Groups<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * <a href="#user_defined_output_groups">User-Defined output Groups</a><br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * Default output Groups<br>
+    <br>
+    <b><a name="user_defined_output_groups"></a>user-defined output
+      groups<br>
+    </b>* created by user to test a condition based on incoming data.<br>
+    * consists of output ports &amp; a group filter condition.<br>
+    * create on user-defined group for each condition that you want to
+    specify.<br>
+    * int service evaluates each incoming row with condition.<br>
+    * int service test conditions of each user-defined groups before
+    sending the row to default group.<br>
+    * order of evaluation depends on order of connect output groups.<br>
+    * int service processes user-defined groups that are connected to a
+    transformation or target in mapping.<br>
+    * int service processes user-defined groups that <font color="#ff0000">are not</font> connected only if default group is
+    connected to a transformation or target in mapping.<br>
+    * if row satisfies condition of multiple groups, int service <font color="#ff0000">passes this row multiple times</font>.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    Examples:<br>
+    <br>
+    [<a href="http://www.guru99.com/router-transformation-informatica.html">http://www.guru99.com/router-transformation-informatica.html</a>]&nbsp;&nbsp;&nbsp;
+    Router Transformation in Informatica <br>
+    [<a href="http://a2zinformatica.blogspot.in/2014/12/router-transformation.html">http://a2zinformatica.blogspot.in/2014/12/router-transformation.html</a>]&nbsp;&nbsp;&nbsp;
+    Informatica Powercenter Express - Router Transformation<br>
+  </body></html>

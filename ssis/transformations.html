@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>transformations</title></head>
+<body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <h2> <b>Data Flow Transformations (t/ns)</b></h2>
+    <b> <br>
+    </b>* t/ns r divided into two main categories : synchronous and
+    asynshronous <b><br>
+    </b>
+    <ol>
+      <li><a href="#aggregate" style="">Aggregate</a></li>
+      <li>Audit</li>
+      <li>CDC Splitter</li>
+      <li>Character Map</li>
+      <li>Conditional Split</li>
+      <li>Copy Column</li>
+      <li>Data Conversion</li>
+      <li>Data Mining Query</li>
+      <li>Derived Column</li>
+      <li>DQS Cleansing</li>
+      <li>Export Column</li>
+      <li>Fuzzy Grouping</li>
+      <li>Fuzzy Lookup</li>
+      <li>Import Column</li>
+      <li>Lookup</li>
+      <li>Merge</li>
+      <li>Merge Join</li>
+      <li><a href="#multicast">Multicast</a></li>
+      <li>OLE DB Command</li>
+      <li>Percentage Sampling</li>
+      <li>Pivot</li>
+      <li>Row Count</li>
+      <li><a href="#row_sampling">Row Sampling</a></li>
+      <li>Script Component</li>
+      <li>Slowly Changing Dimension (SCD)</li>
+      <li>Sort</li>
+      <li>Term Extraction</li>
+      <li>Term Lookup</li>
+      <li>Union All</li>
+      <li>Unpivot<br>
+      </li>
+    </ol>
+    <br>
+    <br>
+    <b><a name="aggregate"></a>Aggregate t/n<br>
+    </b>* enable us to combine information from multiple records in data
+    flow into a single value. <span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">[</span><a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group" style="font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">san1</a><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">]<br>
+      * functions same way as aggregation functions &amp; GROUP BY in
+      sql </span><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">[</span><a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group" style="font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">san1</a><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">]</span><b><br>
+    </b>* following aggregations r available: <span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">[</span><a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group" style="font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">san1</a><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">]</span>
+    <ol>
+      <li>Average</li>
+      <li>Count</li>
+      <li>Count Distinct</li>
+      <li>Maximum</li>
+      <li>Minimum</li>
+      <li>Sum</li>
+    </ol>
+    <p><br>
+      <b>Audit t/n<br>
+      </b></p>
+    <p><b><br>
+        Cache t/n<br>
+      </b>* enables us to populate a cache that will be subsequently
+      used by a lookup t/n <span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">[</span><a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group" style="font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">san1</a><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">]</span></p>
+    <b><br>
+      Lookup t/n<br>
+    </b>* works similarly to 'Fuzzy' lookup t/n <span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">[</span><a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group" style="font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">san1</a><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">]<br>
+      &nbsp;&nbsp;&nbsp; * difference is lookup t/n requires exact
+      matches, rather than using similarity scores.<br>
+      * selection of source lookup table and column mapping is done in
+      much same way as for Fuzzy lookup t/n.<br><br><br><a name="multicast"></a><span style="font-weight: bold;">multicast t/n</span><br>* let us take a single data flow &amp; use it as input to several data flow t/ns or data flow destination items. </span>[<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br>* simply copies the data flow &amp; sends it to multiple directions. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;"><br><span style="font-weight: bold;"><a name="pct_sampling"></a>percentage sampling t/n<br></span>* enables us to split the data flow into two seperate data flows based on %. </span>[<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br>* useful when we want to create a small sample of a larger set of data for testing or for training a data mining models. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br>* selects rows at random from input data flow. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br>&nbsp;&nbsp;&nbsp;
+* this random sampling provides a more representative sample of entire
+data flow than simply selecting TOP N rows. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br><br><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;"><br><span style="font-weight: bold;"><a name="row_sampling"></a>row sampling t/n</span><br>* enables us to split the data flow into two seperate data flows based on no. of rows. </span>[<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br>* works same as <a href="#pct_sampling">percentage sampling</a> t/n<br>&nbsp;&nbsp;&nbsp;
+* only difference is it determines no. of rows in the sample based on
+requested row count, rather than a requested %. [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;"><br><br><br><span style="font-weight: bold;"><a name="union_all"></a>union all<br></span>* let us merge several data flow into single data flow. </span>[<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">sanb2</a>]<br><br><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;"><br><br><br></span><b>Books:<br></b>[sanb1] <span style="font-weight: bold;">Professional Microsoft SQL Server 2014 Integration Services</span> [<a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Microsoft-SQL-Server-2014-Integration-Services.productCd-1118850874.html" target="_blank">http://www.wrox.com/WileyCDA/WroxTitle/Professional-Microsoft-SQL-Server-2014-Integration-Services.productCd-1118850874.html</a>]<b><br><span style="font-weight: bold;"></span><br></b>[sanb2]<br><span style="font-weight: bold;">
+    Delivering Business Intelligence With Microsoft SQL Server 2016,
+    Fourth Edition</span><br>
+    [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group</a>]
+    <br><span style="color: rgb(0, 0, 0); font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; display: inline ! important; float: none;">
+      <br>
+    </span>
+  </body></html>

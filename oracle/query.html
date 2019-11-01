@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>query</title></head>
+<body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">Queries<br><br>Query 1: subquery execution [<a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9535160200346239565">sanq1</a>]<br><br>Query 2: function for average gain [<a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9535160500346478466">sanq2</a>]<br><br>Query 3: difference of update with rownum and without rownum [<a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9531842000346706210">sanq3</a>]<br><br>query 4: sql query and aggregation and suqueries [<a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:3083286970877" target="_blank">sanq4</a>]<br><br><font style="color: blue;" size="-1">create table inventory<br>(<br>item_no varchar2(50),<br>qty number,<br>bin varchar2(50),<br>effective_date date<br>);<br><br>REM INSERTING into INVENTORY<br>SET DEFINE OFF;<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC006',10,'DC001',to_date('01-FEB-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC006',20,'DC002',to_date('01-FEB-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC006',100,'DC001',to_date('01-MAY-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC006',50,'DC002',to_date('02-MAY-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC006',30,'DC003',to_date('03-MAY-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC006',20,'DC008',to_date('04-MAY-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC007',32,'DC002',to_date('02-MAY-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC007',10,'DC001',to_date('01-FEB-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC007',20,'DC002',to_date('01-FEB-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC007',77,'DC001',to_date('01-MAY-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC007',52,'DC003',to_date('03-MAY-02','DD-MON-RR'));<br>Insert into INVENTORY (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values ('AC007',33,'DC008',to_date('04-MAY-02','DD-MON-RR'));<br><br>SELECT item_no<br>, SUM(qty)<br>FROM<br>&nbsp; ( SELECT DISTINCT item_no<br>&nbsp; , bin<br>&nbsp; , first_value(qty) over (partition BY item_no, bin order by effective_date DESC) qty<br>&nbsp; FROM inventory<br>&nbsp; )<br>GROUP BY item_no<br>---------------------------------<br>SELECT item_no<br>,SUM(qty)<br>FROM inventory t<br>WHERE effective_date =<br>&nbsp; (SELECT MAX(effective_date)<br>&nbsp; FROM inventory t1<br>&nbsp; where t1.item_no = t.item_no<br>&nbsp;&nbsp;&nbsp; and t1.bin = t.bin<br>&nbsp; )<br>GROUP BY item_no<br><br>=========================================================================================================================================================<br><br></font>
+    <br>
+    <br>
+    <a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:12864646978683">https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:12864646978683</a><br>
+    <br>
+    create table t1 (order1 number , opn number, station varchar2(15),
+    close_date date);<br>
+    <br>
+    insert into t1 values
+    (12345,10,'RECV',to_date('01/07/2003','dd/mm/yyyy'));<br>
+    insert into t1 values
+    (12345,20,'MACH1',to_date('02/07/2003','dd/mm/yyyy'));<br>
+    insert into t1 values
+    (12345,25,'MACH1',to_date('05/07/2003','dd/mm/yyyy'));<br>
+    insert into t1 values
+    (12345,30,'MACH1',to_date('11/07/2003','dd/mm/yyyy'));<br>
+    insert into t1 values
+    (12345,36,'INSP1',to_date('12/07/2003','dd/mm/yyyy'));<br>
+    insert into t1 values
+    (12345,50,'MACH1',to_date('16/07/2003','dd/mm/yyyy'));<br>
+    insert into t1 values
+    (12345,90,'MACH2',to_date('30/07/2003','dd/mm/yyyy'));<br>
+    insert into t1 values
+    (12345,990,'STOCK',to_date('01/08/2003','dd/mm/yyyy'));<br>
+    <br>
+    <font size="-1">SELECT&nbsp; order1<br>
+      &nbsp;, station<br>
+      &nbsp;, lag_close_date<br>
+      &nbsp;, close_date<br>
+      &nbsp;FROM<br>
+      &nbsp; (<br>
+      &nbsp;&nbsp; SELECT&nbsp; order1<br>
+      &nbsp;&nbsp;&nbsp; , lag(station) over (partition BY order1 order
+      by close_date) lag_station<br>
+      &nbsp;&nbsp;&nbsp; , lead(station) over (partition BY order1 order
+      by close_date) lead_station<br>
+      &nbsp;&nbsp;&nbsp; , station<br>
+      &nbsp;&nbsp;&nbsp; , close_date<br>
+      &nbsp;&nbsp;&nbsp; , lag(close_date) over (partition BY order1
+      order by close_date) lag_close_date<br>
+      &nbsp;&nbsp;&nbsp; , lead(close_date) over (partition BY order1
+      order by close_date) lead_close_date<br>
+      &nbsp;&nbsp;&nbsp; FROM t1<br>
+      &nbsp; )<br>
+      &nbsp;WHERE lag_station IS NULL<br>
+      &nbsp; OR lead_station IS NULL<br>
+      &nbsp; OR lead_station &lt;&gt; station</font><br>
+    <br>
+    <a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:3083286970877">https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:3083286970877</a><font size="-2"><br>
+      <br>
+      <font size="-1">&nbsp; CREATE TABLE "SCOTT"."T2" <br>
+        &nbsp;&nbsp; (&nbsp;&nbsp;&nbsp; "ITEM_NO" VARCHAR2(20 BYTE), <br>
+        &nbsp;&nbsp;&nbsp; "QTY" NUMBER, <br>
+        &nbsp;&nbsp;&nbsp; "BIN" VARCHAR2(20 BYTE), <br>
+        &nbsp;&nbsp;&nbsp; "EFFECTIVE_DATE" DATE<br>
+        &nbsp;&nbsp; ) SEGMENT CREATION IMMEDIATE <br>
+        &nbsp; PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS
+        LOGGING<br>
+        &nbsp; STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1
+        MAXEXTENTS 2147483645<br>
+        &nbsp; PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+        DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)<br>
+        &nbsp; TABLESPACE "USERS" ;<br>
+        REM INSERTING into SCOTT.T2<br>
+        SET DEFINE OFF;<br>
+        Insert into SCOTT.T2 (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values
+        ('AC006',10,'DC001',to_date('01-FEB-02','DD-MON-RR'));<br>
+        Insert into SCOTT.T2 (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values
+        ('AC006',20,'DC002',to_date('01-FEB-02','DD-MON-RR'));<br>
+        Insert into SCOTT.T2 (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values
+        ('AC006',100,'DC001',to_date('01-MAY-02','DD-MON-RR'));<br>
+        Insert into SCOTT.T2 (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values
+        ('AC006',50,'DC002',to_date('02-MAY-02','DD-MON-RR'));<br>
+        Insert into SCOTT.T2 (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values
+        ('AC006',30,'DC003',to_date('03-MAY-02','DD-MON-RR'));<br>
+        Insert into SCOTT.T2 (ITEM_NO,QTY,BIN,EFFECTIVE_DATE) values
+        ('AC006',20,'DC008',to_date('04-MAY-02','DD-MON-RR'));</font></font><br><br>==============================================================================================================================================<br>query to find missing sequence number and date [<a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9535187800346370934" target="_blank">sanq5</a>]<br><br><br><font style="color: blue;" size="-1">with rws as (<br>&nbsp; select 1 id, date'2015-01-01' dt from dual union all <br>&nbsp; select 2 id, date'2017-01-01' dt from dual union all <br>&nbsp; select 3 id, date'2016-01-01' dt from dual union all <br>&nbsp; select 4 id, date'2018-01-01' dt from dual <br>), prev as (<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SELECT r.*,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LAG(dt) OVER(ORDER BY id) prev_dt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM rws r<br>)<br>SELECT *<br>FROM prev WHERE dt &lt; prev_dt;</font><br><br>==============================================================================================================================================<br>Find all routes possible from the given source and destination values in table&nbsp;[<a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9535185900346495894" target="_blank">sanq6</a>]<br><br><br>
+<br></body></html>

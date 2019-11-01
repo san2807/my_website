@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>sorter</title></head>
+
+  <body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <a href="#aggregator">Aggregator Transformation</a><br>
+    <a href="#sorter">Sorter Transformation</a><br>
+    <a href="#normalizer">Normalizer Transformation</a><br>
+    <a href="#seq_generator">Sequence Generator Transformation</a><br>
+    <a href="#rank">Rank Transformation</a><br>
+    <br>
+    <b><a name="aggregator"></a>Aggregator Transformation</b><br>
+    * performs aggregate calculations (such as averages and sums)<br>
+    * int service performs aggregate calculations as it reads and stores
+    data group and row data in an aggregate cache.<br>
+    * aggregator t/n perform calculations on groups where EXP t/n
+    permits you to perform calculations on a row-by-row basis.<br>
+    * when u use t/n language to create aggregate exp, can use
+    conditional clauses to filter rows, providing more flexibility than
+    sql language.<br>
+    * after u create a session that includes an AGG t/n, u can enable
+    session option -<b>Incremental Aggregation.</b><br>
+    * when int service performs incremental aggregation, it passes
+    source data through mapping and uses historical cache data to
+    perform aggregation calculations incrementally.<br>
+    <br>
+    componets of AGG t/n<br>
+    * aggregate cache<br>
+    * aggregate expression<br>
+    * group by port<br>
+    * sorted input<br>
+    <br>
+    <br>
+    <a name="sorter"></a>Sorter Transformation<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <b>Scenarios</b>:[]<br>
+    <br>
+    [<a href="http://www.folkstalk.com/2013/12/get-previous-row-value-in-informatica.html">http://www.folkstalk.com/2013/12/get-previous-row-value-in-informatica.html</a>]
+    Get Previous Row Value in Informatica<br>
+    <br>
+    <a name="normalizer"></a><font size="+2"><b>Normalizer
+        Transformation</b></font><br>
+    * receives a row that contain multiple-occuring columns and returns
+    a row for each instance of multiple-occuring data.<br>
+    * processes multiple-occuring columns or multiple-occuring groups of
+    columns in each source row.<br>
+    * parses multiple-occuring columns from COBOL sources, relational
+    tables or other sources.<br>
+    <br>
+    for eg. u have a relational table that stores 4 quarters of sales by
+    store. u need to create a row for each sales occurrence.<br>
+    &nbsp;&nbsp;&nbsp; can configure a NORMALIZER t/f to return a
+    seprate row for each quarter.<br>
+    <br>
+    <img src="normalizer1.PNG" alt="normalizer1" height="50%" width="50%"><br>
+    <br>
+    * it also returns an index that identifies quarter<br>
+    <br>
+    Normalizer Transformation Components<br>
+    1. Transformation<br>
+    2. Ports<br>
+    3. Properties<br>
+    4. Normalizer<br>
+    5. Metadata Extensions<br>
+    <br>
+    <br>
+    <b>References:</b><br>
+    [<a href="http://a2zinformatica.blogspot.in/2014/12/normalizer-transformation-is.html">http://a2zinformatica.blogspot.in/2014/12/normalizer-transformation-is.html</a>]
+    Informatica Powercenter Express - Normalizer Transformation<br>
+    <br>
+    <br>
+    <br>
+    <b><a name="seq_generator"></a><font size="+2">Sequence Generator
+        Transformation</font><br>
+      <br>
+      <br>
+      <br>
+      References: <br>
+    </b>[<a href="http://a2zinformatica.blogspot.in/2014/11/sequence-generator-transformation.html">http://a2zinformatica.blogspot.in/2014/11/sequence-generator-transformation.html</a>]
+    Informatica Powercenter Express - Sequence Generator Transformation<br>
+    <b><br>
+      <br>
+      <br>
+      <a name="rank"></a><font size="+2">Rank Transformation</font><br>
+      <br>
+      <br>
+      References:<br>
+    </b>[<a href="http://a2zinformatica.blogspot.in/2014/11/rank-transformation.html">http://a2zinformatica.blogspot.in/2014/11/rank-transformation.html</a>]
+    Informatica Powercenter Express - Rank Transformation<br>
+  </body></html>

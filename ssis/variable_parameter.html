@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>variable_parameter</title></head>
+<body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <br>
+    Expression<br>
+    <a href="#variable">Variables</a><br>
+    <a href="#parameter">Parameter</a><br>
+    <br>
+    <br>
+    <b><a name="expression"></a>Expression</b><br>
+    * key to understanding how to create dynamic p/c in SSIS.<br>
+    <br>
+    <br>
+    <br>
+    <b><a name="variable"></a>Variables (v/a)</b><br>
+    * contains a value that can b hardcoded, dynamically set once or
+    modified multiple times throughout execution of package.<br>
+    * provides a method for objects in a package to communicate each
+    other.<br>
+    * similar to their use in programming languages, variables r used in
+    specific types of logic<br>
+    &nbsp;&nbsp;&nbsp; (such as iterating through a loop, concatenating
+    multiple values together to create a file d/y<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; or passing an array bw objects)<br>
+    * v/a can b created, deleted, renamed and have their data types
+    changed, as long as p/c in design mode.<br>
+    * once p/c is validated &amp; in runtime mode, v/a definition in
+    locked ; only value of v/a can be changed.<br>
+    * <b>scope of v/a</b> : v/a can be scoped either to a p/c <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; or to a specific component in
+    the p/c<br>
+    * v/a r case sensitive<br>
+    * v/a can hide other v/a values higher in the hierarchy.<br>
+    <br>
+    <br>* how to use v/a and refer its value in C# or VB through script task&nbsp;[<a href="https://www.youtube.com/watch?v=S9c8kB7j7ao">sanref1</a>]<br><br><br>
+    <br>
+    <b><a name="parameter"></a>Parameter (p/r)<br>
+    </b>* can be used in an expression to affect different properties in
+    the package.<br>
+    * 2 types of p/r:<br>
+    &nbsp;&nbsp;&nbsp; * project <br>
+    &nbsp;&nbsp;&nbsp; * p/c<br>
+    <br>
+    <br>
+    <b>Project p/r</b><b><br>
+      <br>
+      <br>
+      p/c p/r</b><br>
+    <br>
+    <br><br><br><br>
+    <b>Books:<br></b>[sanb1] <span style="font-weight: bold;">Professional Microsoft SQL Server 2014 Integration Services</span> [<a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Microsoft-SQL-Server-2014-Integration-Services.productCd-1118850874.html" target="_blank">http://www.wrox.com/WileyCDA/WroxTitle/Professional-Microsoft-SQL-Server-2014-Integration-Services.productCd-1118850874.html</a>]<b><br><span style="font-weight: bold;"></span><br></b>[sanb2]<br><span style="font-weight: bold;">
+    Delivering Business Intelligence With Microsoft SQL Server 2016,
+    Fourth Edition</span><br>
+    [<a href="https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group">https://www.mhprofessional.com/9781259641480-usa-delivering-business-intelligence-with-microsoft-sql-server-2016-fourth-edition-group</a>]
+    <br>
+    <br><span style="font-weight: bold;">References:<br></span><br>[sanref1] [<a href="https://www.youtube.com/watch?v=S9c8kB7j7ao">https://www.youtube.com/watch?v=S9c8kB7j7ao</a>] SQL Server Integration Services (SSIS) Part 4 - Variables<br><span style="font-weight: bold;"><br></span>
+    <br>
+  </body></html>

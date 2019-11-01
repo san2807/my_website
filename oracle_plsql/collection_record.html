@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>collection_record</title></head><body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 204);" alink="#000088" link="#0000ff" vlink="#ff0000"><span style="font-weight: bold;">collection</span><br>* is an ordered group of elements (of same type)<br>* is a general concept that encompasses lists, array, and other datatypes used in classic programming algorithms<br>* each element is addressed by unique subscript<br>* collection types<br><ol><li>associative arrays</li><li>nested tables</li><li>varrays</li></ol><br><br><span style="font-weight: bold;">record</span><br>* group of related items stored in fields, each with its own name &amp; datatype.<br>* its like a variable that can hold a table row (or some columns of table row)<br>* %rowtype attribute : to declare a pl/sql record that represent a row in d/b table (for all columns of the row)<br>*
+for some columns or columns from different tables, define a view or
+declare a cursor to select right columns &amp; necessary joins &amp;
+then apply %rowtype to view or cursor.<br><br>defining &amp; declaring records<br>* to create records, define a RECORD type &amp; then declare records of that type.<br>&nbsp;&nbsp;&nbsp; or<br>* create or find table,view or cursor &amp; use %ROWTYPE attribute <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; * like var1&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+employees%rowtype &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;for employee table
+record.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; var2&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+employee_v%rowtype &nbsp;&nbsp;&nbsp; for view<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+var3&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; c1%rowtype &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; for cursor<br><br>* how to use collection &amp; records. see <a href="code1.html">code</a> ....see how <span style="font-weight: bold;">collection of records</span> has been created using tables &amp; cursor &amp; then BULK COLLECT is used.<br><br><br></body></html>

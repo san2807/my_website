@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>update_strategy</title></head>
+
+  <body style="background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+    <font face="Verdana" size="-1"><b>Update Strategy Transformation</b><br>
+      <br>
+      * when designing a DWH, u need to decide what type of information
+      to store in targets.<br>
+      * as part of design, u need to determine whether to maintain all
+      historic data or just most recent changes.<br>
+      <br>
+      <br>
+      * model u choose determines how u handle changes in existing rows.<br>
+      * in powercenter, u set update strategy at two levels:<br>
+      &nbsp;&nbsp;&nbsp; * within a session<br>
+      &nbsp;&nbsp;&nbsp; * within a mapping<br>
+      * can also use CUSTOM transformation to flag rows for insert,
+      delete, update or reject.<br>
+      <br>
+      <b>setting update strategy<br>
+      </b>* <font color="#ff0000">in mapping</font> : to control how
+      rows are flagged for insert, update, delete or reject within a
+      mapping, add UPDATE STRATEGY transformation.<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; * essential if u want to
+      flag rows destined for same target for different database
+      operations, or if u want to reject rows.<br>
+      * <font color="#ff0000">in session</font> : can flag all rows for
+      insert, delete or update<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; can select data
+      driven option (where int service follows instructions coded into
+      update strategy transformations within session mapping).<br>
+      <br>
+      <b>flagging rows within a mapping<br>
+      </b>* for greatest degree of control over update strategy, add it
+      to a mapping.<br>
+      * most important feature is its <font color="#ff0000">update
+        strategy expression</font>, used to flag individual rows for
+      insert, delete, update or reject.<br>
+      * constant for each database operation and their numeric
+      equivalent:<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Insert&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; DD_INSERT&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; 0<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Update&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp; DD_UPDATE&nbsp;&nbsp;&nbsp; 1<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Delete&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; DD_DELETE&nbsp;&nbsp;&nbsp;&nbsp;
+      2<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Reject&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+      DD_REJECT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
+      <br>
+      * any other value will be treated as INSERT<br>
+      <br>
+      <b>forwarding rejected rows<br>
+      </b>* Use of the property FORWARDING REJECTED ROWS in an Update
+      Strategy transformation?? [<a href="#1">1</a>]<b><br>
+        <br>
+        update strategy expressions<br>
+        <br>
+        <br>
+        aggregator and update strategy <br>
+        <br>
+        <br>
+        lookup and update strategy<br>
+        <br>
+        setting update strategy for session<br>
+        <br>
+        <br>
+        update strategy checklist<br>
+        <br>
+        [<a href="http://dwhlaureate.blogspot.in/2015/08/use-of-property-forwarding-rejected.html">1</a>]
+      </b></font><font face="Verdana" size="-1"><b><a name="1"></a>Use
+        of the property FORWARDING REJECTED ROWS in an Update Strategy
+        transformation??<br>
+        <br>
+        <br>
+      </b>[<a href="http://a2zinformatica.blogspot.in/2014/12/update-strategy-transformation-in.html">http://a2zinformatica.blogspot.in/2014/12/update-strategy-transformation-in.html</a>]
+      Update Strategy Transformation in Informatica<br>
+    </font>
+  </body></html>
