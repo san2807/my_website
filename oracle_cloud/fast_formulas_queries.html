@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>fast_formulas_queries</title></head><body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 204);" alink="#000088" link="#0000ff" vlink="red">Queries Fast Formulas:<br><br><br><br><br>SELECT f.base_function_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f.description,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+f.definition || '('|| LISTAGG(fp.name|| ' '|| decode(fp.class, 'I',
+'IN', 'O', 'OUT')|| ' '|| decode(fp.data_type, 'N', 'NUMBER', 'T',
+'VARCHAR2','D', 'DATE'), ',') <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+WITHIN GROUP(ORDER BY fp.sequence_number)|| ') RETURN '||
+decode(f.data_type, 'N', 'NUMBER', 'T', 'VARCHAR2','D', 'DATE') AS
+functioncall<br>FROM ff_function_parameters fp,<br>&nbsp;&nbsp;&nbsp;&nbsp; ff_functions_vl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f<br>WHERE f.function_id = fp.function_id<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AND upper(f.description) NOT LIKE '%DEPRECATED%'<br>GROUP BY f.base_function_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f.description,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f.definition,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f.data_type<br><br><br><br><br>SELECT to_char("FF_FORMULAS_VL"."EFFECTIVE_START_DATE", 'DD-MON-YYYY') AS "EFFECTIVE_START_DATE",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+to_char("FF_FORMULAS_VL"."EFFECTIVE_END_DATE",
+'DD-MON-YYYY')&nbsp;&nbsp; AS "EFFECTIVE_END_DATE",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."BASE_FORMULA_NAME"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "BASE_FORMULA_NAME",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."FORMULA_NAME"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "FORMULA_NAME",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."DESCRIPTION"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "DESCRIPTION",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."EDIT_STATUS"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "EDIT_STATUS",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."FORMULA_TEXT"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "FORMULA_TEXT",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."COMPILE_FLAG"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "COMPILE_FLAG",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."LEGISLATION_CODE"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "LEGISLATION_CODE",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+to_char("FF_FORMULAS_VL"."LAST_UPDATE_DATE",
+'DD-MON-YYYY')&nbsp;&nbsp;&nbsp;&nbsp; AS "LAST_UPDATE_DATE",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."LAST_UPDATED_BY"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "LAST_UPDATED_BY",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULAS_VL"."CREATED_BY"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "CREATED_BY",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+to_char("FF_FORMULAS_VL"."CREATION_DATE",
+'DD-MON-YYYY')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AS
+"CREATION_DATE",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"FF_FORMULA_TYPES_TL"."FORMULA_TYPE_NAME"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AS "FORMULA_TYPE_NAME"<br>FROM "FUSION"."FF_FORMULA_TYPES_TL" "FF_FORMULA_TYPES_TL",<br>&nbsp;&nbsp;&nbsp;&nbsp; "FUSION"."FF_FORMULAS_VL"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "FF_FORMULAS_VL"<br>WHERE "FF_FORMULAS_VL"."FORMULA_TYPE_ID" = "FF_FORMULA_TYPES_TL"."FORMULA_TYPE_ID"<br><br><br><br><br><br><br><br><br><br><br><br><br>SELECT fat.module_name<br>&nbsp;,fdg.base_group_name<br>&nbsp;,fdg.group_name<br>&nbsp;,fdi.base_user_name<br>&nbsp;,fdi.user_name<br>&nbsp;,fdi.description<br>&nbsp;,fdi.data_type<br>&nbsp;,fdi.definition_text<br>&nbsp;,fue.base_user_entity_name<br>&nbsp;,fue.description fue_des<br>&nbsp;,fr.base_route_name<br>&nbsp;,fr.multi_row_flag<br>&nbsp;,(<br>&nbsp; SELECT substr(sys.stragg(',' || base_context_name), 2) context<br>&nbsp; FROM fusion.ff_route_context_usages i<br>&nbsp;&nbsp; ,fusion.ff_contexts_vl j<br>&nbsp; WHERE i.context_id = j.context_id<br>&nbsp;&nbsp; AND i.route_id = fr.route_id<br>&nbsp; ) contexts_used<br>&nbsp;,(<br>&nbsp; SELECT substr(sys.stragg(',' || parameter_name), 2) context<br>&nbsp; FROM fusion.ff_route_parameters<br>&nbsp; WHERE route_id = fr.route_id<br>&nbsp; ) parameters<br>&nbsp;,(<br>&nbsp; SELECT substr(sys.stragg(',' || base_context_name), 2) context<br>&nbsp; FROM fusion.ff_dbi_groups_vl a<br>&nbsp;&nbsp; ,fusion.ff_dbi_usages b<br>&nbsp;&nbsp; ,fusion.ff_database_items_vl c<br>&nbsp;&nbsp; ,fusion.ff_contexts_vl d<br>&nbsp; WHERE a.context_id = d.context_id<br>&nbsp;&nbsp; AND a.dbi_group_id = b.dbi_group_id<br>&nbsp;&nbsp; AND b.dbi_id = c.database_item_id<br>&nbsp;&nbsp; AND c.user_entity_id = fue.user_entity_id<br>&nbsp; ) contexts_set<br>FROM fusion.ff_database_items_vl fdi<br>&nbsp;,fusion.ff_dbi_usages fdu<br>&nbsp;,fusion.ff_dbi_groups_vl fdg<br>&nbsp;,fusion.fnd_appl_taxonomy_vl fat<br>&nbsp;,fusion.ff_user_entities_vl fue<br>&nbsp;,fusion.ff_routes_vl fr<br>WHERE fdi.module_id IS NOT NULL<br>&nbsp;AND fdi.database_item_id = fdu.dbi_id(+)<br>&nbsp;AND fdu.dbi_group_id = fdg.dbi_group_id(+)<br>&nbsp;AND fdi.module_id = fat.module_id<br>&nbsp;AND fdi.user_entity_id = fue.user_entity_id<br>&nbsp;AND fue.route_id = fr.route_id<br>&nbsp;AND fdi.module_id IS NOT NULL<br>ORDER BY module_name<br>&nbsp;,fdi.base_user_name</body></html>
