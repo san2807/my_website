@@ -1,6 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>termination</title></head><body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 204);" alink="#000088" link="#0000ff" vlink="#996633"><h2>Terminations</h2><br><br><br><br><span style="font-weight: bold;">Ending Employment</span><br>when terminate w/r:<br>&nbsp;&nbsp;&nbsp; 1. any assignment associated with w/r r ended automatically<br>&nbsp;&nbsp;&nbsp;
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>termination</title></head>
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 204);" alink="#000088" link="#0000ff" vlink="#996633"><h2>Terminations</h2><br><br><br><br><span style="font-weight: bold;">Ending Employment</span><br>when terminate w/r:<br>&nbsp;&nbsp;&nbsp; 1. any assignment associated with w/r r ended automatically<br>&nbsp;&nbsp;&nbsp;
 2. status of w/r &amp; associated assignments r changed to inactive on
 the day following the termination date.<br>&nbsp;&nbsp;&nbsp; 3. period
 of service both LE &amp; enterprise ends on the termination date. The
-person becomes ex-employee for that LE<br>&nbsp;&nbsp;&nbsp; 4. person's user access &amp; roles r revoked by default after termination date.<br><br><br><br><span style="font-weight: bold;">Reverse Terminations</span><br><br><br><br><br><br><br><br><span style="font-weight: bold;">References:</span><br><br><br></body></html>
+person becomes ex-employee for that LE<br>&nbsp;&nbsp;&nbsp; 4. person's user access &amp; roles r revoked by default after termination date.<br><br><br><br><span style="font-weight: bold;">Reverse Terminations</span><br><br><br><br><br>Termination of person will not have any update on per_all_people_f.<br>It only update per_all_assignments_m and per_periods_of_service<br><br>A new record added in per_all_assignments_m <br>Columns updated in per_all_assignments_m on termination:<br>assignment_status_type_id&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; e.g. 3<br>assignment_status_type&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;e.g. INACTIVE<br>action_code&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;e.g. RESIGNATION<br>reason_code&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;e.g. RESIGN_PERSONAL<br><br><br><br><br><span style="font-weight: bold;">References:</span><br><br><br></body></html>
